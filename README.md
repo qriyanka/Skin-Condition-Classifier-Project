@@ -28,7 +28,7 @@ Six erythemato-squamous conditions that come up in both clinical lab work and es
 | Chronic Dermatitis | Compromised barrier, persistent inflammation |
 | Pityriasis Rubra Pilaris | Rare, frequently misdiagnosed, important edge case |
 
-**Dataset:** [UCI Dermatology Dataset](https://archive.ics.uci.edu/ml/datasets/Dermatology) — 366 patients, 34 clinical features, peer-reviewed.
+**Dataset:** [UCI Dermatology Dataset](https://archive.ics.uci.edu/ml/datasets/Dermatology) (366 patients, 34 clinical features, peer-reviewed)
 **Citation:** Ilter, N. and Guvenir, H.A. (1998). Differentiating Erythemato-Squamous Diseases.
 
 ---
