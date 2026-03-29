@@ -59,7 +59,7 @@ python src/explore.py
 python src/train.py
 ```
 
-Three scripts, run them in order and everything generates itself. The charts and model outputs all save to results/ automatically.
+There are three scripts, run them in order and everything generates itself. The charts and model outputs all save to results/ automatically.
 
 ---
 
@@ -83,13 +83,3 @@ I'm Priyanka. Clinical Laboratory Scientist, Master Esthetician candidate at Ate
 
 ---
 
-*Research and educational purposes only. Not a medical diagnostic tool.*
-"""
-with open("README.md", "w") as f:
-    f.write(code.strip())
-print("Written: README.md")
-PYEOF
-
----
-
-This project is for research and educational purposes. Not a medical diagnostic tool.
