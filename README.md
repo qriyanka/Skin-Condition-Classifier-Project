@@ -1,33 +1,35 @@
-# Skin Condition Classifier
-### Clinical AI for Dermatological Diagnosis — Built for L'Oreal Dermatological Beauty
+python3 << 'PYEOF'
+code = """# Skin Condition Classifier
+A machine learning classifier for six dermatological skin conditions, built on clinical and histopathological data.
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://python.org)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3-orange)](https://scikit-learn.org)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ---
 
-## Overview
+## About this project
 
-This project builds and evaluates two machine learning models — a **Random Forest** and a **Neural Network (MLP)** — to classify six clinically distinct skin conditions using 34 dermatological features per patient.
+I have a background in Clinical Laboratory Sciences and I am currently completing a 900-hour Master Esthetician program at Atelier Esthetique. I know what eosinophil infiltrate looks like under a microscope and I know what erythema looks like on a client. This project is about using that background to actually build something.
 
-The workflow mirrors the diagnostic logic behind tools like the **SKINSCOPE LED** used at SkinCeuticals SkinLab: structured skin assessment, feature extraction, condition classification, treatment context.
+I trained two machine learning models to classify six dermatological skin conditions using 34 clinical and histopathological features. I wanted to build an end-to-end pipeline that reflects how skin conditions are actually differentiated in clinical practice, not just run a model on a dataset I found online.
 
-**Dataset:** [UCI Dermatology Dataset](https://archive.ics.uci.edu/ml/datasets/Dermatology) — 366 patients, 34 clinical features, peer-reviewed and citable.
+---
+
+## What it classifies
+
+Six erythemato-squamous conditions that come up in both clinical lab work and esthetic practice:
+
+| Condition | Clinical presentation |
+|-----------|----------------------|
+| Psoriasis | Chronic, immune-mediated, disrupts the skin barrier |
+| Seborrhoeic Dermatitis | Scalp and facial, driven by yeast-related inflammation |
+| Lichen Planus | T-cell mediated, polygonal papule presentation |
+| Pityriasis Rosea | Herald patch, self-resolving, commonly misread |
+| Chronic Dermatitis | Compromised barrier, persistent inflammation |
+| Pityriasis Rubra Pilaris | Rare, frequently misdiagnosed, important edge case |
+
+**Dataset:** [UCI Dermatology Dataset](https://archive.ics.uci.edu/ml/datasets/Dermatology) — 366 patients, 34 clinical features, peer-reviewed.
 **Citation:** Ilter, N. and Guvenir, H.A. (1998). Differentiating Erythemato-Squamous Diseases.
-
----
-
-## Conditions Classified
-
-| Code | Condition | L'Oreal Relevance |
-|------|-----------|-------------------|
-| 1 | Psoriasis | La Roche-Posay Lipikar, Cicaplast lines |
-| 2 | Seborrhoeic Dermatitis | Vichy Dercos, CeraVe Scalp range |
-| 3 | Lichen Planus | Dermatological Beauty clinical pipeline |
-| 4 | Pityriasis Rosea | La Roche-Posay Toleriane range |
-| 5 | Chronic Dermatitis | CeraVe Moisturizing Cream core use case |
-| 6 | Pityriasis Rubra Pilaris | Rare condition, research pipeline relevance |
 
 ---
 
@@ -35,69 +37,58 @@ The workflow mirrors the diagnostic logic behind tools like the **SKINSCOPE LED*
 
 | Model | Test Accuracy | Macro ROC-AUC |
 |-------|--------------|---------------|
-| Random Forest | 94.6% | 0.9982 |
-| Neural Network MLP | 89.2% | 0.9953 |
+| Random Forest | **94.6%** | **0.9982** |
+| Neural Network (MLP) | 89.2% | 0.9953 |
 
-Random Forest is the production model. ROC-AUC of 0.9982 indicates near-perfect discriminative ability across all six conditions.
+The Random Forest performed better and it was the right choice for this dataset. 366 patients and 34 features is not a deep learning problem. The feature importance output also maps directly back to clinical markers, so you can read why the model made a prediction, not just that it did.
 
----
-
-## Breaking Down How to Run the Project: 
-```
-There are three scripts, run them in order and everything generates itself. Start with load_data.py, then explore.py, then train.py. The charts and model outputs all save to results/ automatically so you don't have to touch anything else.
-```
+ROC-AUC of 0.9982 means near-perfect separation across all six conditions. Random guessing on 6 classes gives you 0.5.
 
 ---
 
-## How to Run
+## How to run it
 ```bash
 git clone https://github.com/qriyanka/Skin-Condition-Classifier-Project.git
 cd Skin-Condition-Classifier-Project
 conda create -n skin-classifier python=3.10
 conda activate skin-classifier
 pip install -r requirements.txt
+
 python src/load_data.py
 python src/explore.py
 python src/train.py
 ```
 
----
-
-## Key Technical Decisions
-
-**Why Random Forest over deep learning?**
-With 366 patients and 34 tabular features, tree-based methods consistently outperform neural networks. Random Forest also provides native feature importance — clinically interpretable output mapping directly to which skin markers drive each diagnosis.
-
-**Why class weights?**
-The dataset has a 5.6x imbalance (112 Psoriasis vs 20 Pityriasis Rubra Pilaris). Balanced class weights ensure the model learns equally from rare conditions.
-
-**Why median imputation?**
-8 missing values in the age column only. Median imputation is robust to outliers and preserves the clinical distribution.
+Three scripts, run them in order and everything generates itself. The charts and model outputs all save to results/ automatically.
 
 ---
 
-## Clinical Features Used
+## Technical decisions
 
-34 features across two layers:
+**Random Forest over deep learning:** Small clinical datasets and tree-based methods are a natural fit. Neural networks would overfit here. Random Forest also gives you feature importance natively, which matters when the features have real clinical meaning.
 
-**Clinical markers:** erythema, scaling, definite borders, itching, koebner phenomenon, polygonal papules, follicular papules, oral mucosal involvement, knee and elbow involvement, scalp involvement, family history, age
+**Class weights:** The data has a 5.6x imbalance between the most and least common condition. Without correction the model would underperform on rare conditions, which in a clinical context are often the most important ones to catch.
 
-**Histopathological markers:** melanin incontinence, eosinophil infiltrate, PNL infiltrate, fibrosis of papillary dermis, exocytosis, acanthosis, hyperkeratosis, parakeratosis, and 14 additional biopsy-level markers
+**Median imputation:** Eight missing values, all in the age column. Median imputation is standard for clinical data with small amounts of missingness and does not distort the distribution.
 
-This dual-layer feature set mirrors the structured assessment protocol used in physician-led clinical skin evaluations — analogous to what SKINSCOPE LED captures at the surface level.
-
----
-
-## Industry Connection
-
-L'Oreal Dermatological Beauty (La Roche-Posay, CeraVe, Vichy, SkinCeuticals) is actively investing in AI-powered skin assessment. This project demonstrates end-to-end ML pipeline ownership, dermatology domain knowledge, interpretable model design appropriate for clinical contexts, and reproducible documented code.
+**On the features:** The 34 features split into clinical observations you would make during a skin assessment, erythema, scaling, itching, border definition, koebner phenomenon, and histopathological markers you would see under a microscope, acanthosis, hyperkeratosis, parakeratosis, eosinophil infiltrate, PNL infiltrate. My CLS training means I can read both layers of this dataset fluently, which shaped how I approached the analysis.
 
 ---
 
-## Author
+## About me
 
-Priyanka — Data Scientist
-GitHub: https://github.com/qriyanka
+I'm Priyanka. Clinical Laboratory Scientist, Master Esthetician candidate at Atelier Esthetique, and data scientist in progress. I build projects where clinical science and machine learning overlap because that is where my background actually lives.
+
+[GitHub](https://github.com/qriyanka)
+
+---
+
+*Research and educational purposes only. Not a medical diagnostic tool.*
+"""
+with open("README.md", "w") as f:
+    f.write(code.strip())
+print("Written: README.md")
+PYEOF
 
 ---
 
