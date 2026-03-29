@@ -1,5 +1,4 @@
-python3 << 'PYEOF'
-code = """# Skin Condition Classifier
+Skin Condition Classifier
 A machine learning classifier for six dermatological skin conditions, built on clinical and histopathological data.
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://python.org)
