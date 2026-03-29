@@ -59,7 +59,7 @@ python src/explore.py
 python src/train.py
 ```
 
-There are three scripts, run them in order and everything generates itself. The charts and model outputs all save to results/ automatically.
+There are three scripts (python src/load_data.py, python src/explore.py, python src/train.py), run them in order and everything generates itself. The charts and model outputs all save to results/ automatically.
 
 ---
 
