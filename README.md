@@ -42,24 +42,9 @@ Random Forest is the production model. ROC-AUC of 0.9982 indicates near-perfect 
 
 ---
 
-## Project Structure
+## Breaking Down How to Run the Project: 
 ```
-skin-condition-classifier/
-├── src/
-│   ├── load_data.py
-│   ├── explore.py
-│   ├── train.py
-│   └── evaluate.py
-├── results/
-│   ├── class_distribution.png
-│   ├── feature_importance_eda.png
-│   ├── rf_confusion_matrix.png
-│   ├── rf_feature_importance.png
-│   ├── mlp_confusion_matrix.png
-│   └── mlp_loss_curve.png
-├── data/
-├── requirements.txt
-└── README.md
+There are three scripts, run them in order and everything generates itself. Start with load_data.py, then explore.py, then train.py. The charts and model outputs all save to results/ automatically so you don't have to touch anything else.
 ```
 
 ---
