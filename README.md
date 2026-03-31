@@ -71,20 +71,3 @@ Three scripts, run them in order and everything generates itself. The charts and
 **Median imputation:** Eight missing values, all in the age column. Median imputation is standard for clinical data with small amounts of missingness and does not distort the distribution.
 
 **On the features:** The 34 features split into clinical observations you would make during a skin assessment, erythema, scaling, itching, border definition, koebner phenomenon, and histopathological markers you would see under a microscope, acanthosis, hyperkeratosis, parakeratosis, eosinophil infiltrate, PNL infiltrate. My CLS training means I can read both layers of this dataset fluently, which shaped how I approached the analysis.
-
----
-
-## About me
-
-I'm Priyanka. Clinical Laboratory Scientist, Master Esthetician candidate at Atelier Esthetique, and data scientist in progress. I build projects where clinical science and machine learning overlap because that is where my background actually lives.
-
-[GitHub](https://github.com/qriyanka)
-
----
-
-*Research and educational purposes only. Not a medical diagnostic tool.*
-"""
-with open("README.md", "w") as f:
-    f.write(code.strip())
-print("Written: README.md")
-PYEOF
