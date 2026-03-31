@@ -46,19 +46,8 @@ ROC-AUC of 0.9982 means near-perfect separation across all six conditions. Rando
 ---
 
 ## How to run it
-```bash
-git clone https://github.com/qriyanka/Skin-Condition-Classifier-Project.git
-cd Skin-Condition-Classifier-Project
-conda create -n skin-classifier python=3.10
-conda activate skin-classifier
-pip install -r requirements.txt
 
-python src/load_data.py
-python src/explore.py
-python src/train.py
-```
-
-Three scripts, run them in order and everything generates itself. The charts and model outputs all save to results/ automatically.
+There are 3 scripts, run them in order (python src/load_data.py, python src/explore.py, python src/train.py) and everything generates itself. The charts and model outputs all save to results/ automatically.
 
 ---
 
