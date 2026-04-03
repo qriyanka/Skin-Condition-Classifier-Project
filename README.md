@@ -60,3 +60,7 @@ There are 3 scripts, run them in order (python src/load_data.py, python src/expl
 **Median imputation:** Eight missing values, all in the age column. Median imputation is standard for clinical data with small amounts of missingness and does not distort the distribution.
 
 **On the features:** The 34 features split into clinical observations you would make during a skin assessment, erythema, scaling, itching, border definition, koebner phenomenon, and histopathological markers you would see under a microscope, acanthosis, hyperkeratosis, parakeratosis, eosinophil infiltrate, PNL infiltrate. My CLS training means I can read both layers of this dataset fluently, which shaped how I approached the analysis.
+---
+
+## Achievement/Reflection/Limitations
+Built an end to end ML from scratch. Woo hoo! I'll come back to this to see how I can improve it. Skin type is genuinely hard to classify from a single image without controlled lighting so it makes sense why my Random Forest model only got 32% accuracy. Health scores are all low (18-21 range) and it's because the dataset images are low resolution compressed JPEGs which lose detail. In a production system like Haut.AI (my source of inspiration for this project), they use high resolution controlled lighting photos which would give much higher scores.
